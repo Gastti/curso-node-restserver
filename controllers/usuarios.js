@@ -7,7 +7,7 @@ const usuariosGet = async (req, res) => {
     // const { q, apellido = 'No Lastname', apikey } = req.query;
 
     const { limite = 5, desde = 0 } = req.query;
-    const query = { estado: true }
+    const query = { state: true }
     // const usuarios = await Usuario.find(query)
     //     .skip(Number(desde))
     //     .limit(Number(limite))
@@ -75,15 +75,9 @@ const usuariosPatch = (req, res) => {
 const usuariosDelete = async (req, res) => {
 
     const { id } = req.params;
-
-    // Fisicamente
-    // const usuario = await Usuario.findByIdAndDelete( id );
-
     const usuario = await Usuario.findByIdAndUpdate(id, { state: false });
 
-    res.json({
-        usuario
-    })
+    res.json({usuario})
 }
 
 module.exports = {
